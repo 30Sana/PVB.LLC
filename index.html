@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Parti Live Views - PVB.LLC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 214, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00ffd6;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00ffd6, #00b8a3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ffd6;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ffd6, #00b8a3);
+            color: #0a0e27;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 214, 0.3);
+        }
+
+        .hero {
+            padding: 120px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 214, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #00ffd6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b8d4;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 2px solid rgba(0, 255, 214, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 214, 0.1);
+            border-color: #00ffd6;
+        }
+
+        .features {
+            padding: 80px 5%;
+            background: linear-gradient(180deg, rgba(0, 255, 214, 0.05) 0%, transparent 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00ffd6;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #b0b8d4;
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 255, 214, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 214, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 255, 214, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00ffd6, #00b8a3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: #b0b8d4;
+            line-height: 1.6;
+        }
+
+        .pricing {
+            padding: 80px 5%;
+            background: #070a1f;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(0, 255, 214, 0.05), rgba(0, 255, 214, 0.02));
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 255, 214, 0.2);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ffd6;
+            box-shadow: 0 30px 60px rgba(0, 255, 214, 0.2);
+        }
+
+        .pricing-card.featured {
+            border-color: #00ffd6;
+            background: linear-gradient(145deg, rgba(0, 255, 214, 0.1), rgba(0, 255, 214, 0.05));
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, #00ffd6, #00b8a3);
+            color: #0a0e27;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #00ffd6;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price span {
+            font-size: 1.2rem;
+            color: #b0b8d4;
+        }
+
+        .pricing-card .limit {
+            color: #b0b8d4;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            color: #b0b8d4;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #00ffd6;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .cta {
+            padding: 100px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 255, 214, 0.1), transparent);
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: #b0b8d4;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            padding: 3rem 5%;
+            background: #070a1f;
+            border-top: 1px solid rgba(0, 255, 214, 0.1);
+            text-align: center;
+            color: #b0b8d4;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">▶</div>
+            PVB.LLC
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#support">Support</a>
+            <a href="https://discord.gg/invite" class="btn-primary">Discord</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>#1 Parti Viewbot</h1>
+            <p>Professional viewer boost software for streamers. Instant delivery, premium features, and unmatched reliability. Start growing your channel today with license-based access.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn-primary">Get Started Now</a>
+                <a href="#features" class="btn-secondary">View Features</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Why Choose PVB.LLC?</h2>
+        <p class="section-subtitle">Premium features designed for serious streamers</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Activation</h3>
+                <p>Get your viewers in under 30 seconds. Plans activate immediately with very quick and easy setup.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Private</h3>
+                <p>AES-256 encryption and advanced anti-detection. Your stream stays safe and protected.</p>
+            </div>
+            <!-- <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Real-Time Dashboard</h3>
+                <p>Monitor your viewers, manage settings, and track performance from our intuitive dashboard.</p>
+            </div> -->
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Low resource usage</h3>
+                <p>Very low resource usage, you will never have to worry about sending thousands of viewers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>24/7 Support</h3>
+                <p>Our team is always available through Discord and live chat to help you succeed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Fast & Reliable</h3>
+                <p>Industry-leading speed with 99.9% uptime. Your stream never has to wait.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Choose Your Plan</h2>
+        <p class="section-subtitle">Monthly license keys with different viewer limits</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">$19<span>/month</span></div>
+                <p class="limit">Up to 500 viewers</p>
+                <ul class="pricing-features">
+                    <li>Instant activation</li>
+                    <!-- <li>Real-time dashboard</li> -->
+                    <li>Basic support</li>
+                    <li>Server-sided</li>
+                    <li>Anti-detection</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%;">Select Plan</button>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-badge">POPULAR</div>
+                <h3>Professional</h3>
+                <div class="price">$39<span>/month</span></div>
+                <p class="limit">Up to 1,500 viewers</p>
+                <ul class="pricing-features">
+                    <li>Everything in Starter</li>
+                    <li>Priority support</li>
+                    <!-- <li>Advanced analytics</li> -->
+                    <!-- <li>Auto-start feature</li> -->
+                    <!-- <li>Custom settings</li> -->
+                </ul>
+                <button class="btn-primary" style="width: 100%;">Select Plan</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Elite</h3>
+                <div class="price">$79<span>/month</span></div>
+                <p class="limit">Up to 5,000 viewers</p>
+                <ul class="pricing-features">
+                    <li>Everything in Professional</li>
+                    <li>24/7 priority support</li>
+                    <li>Beta features access</li>
+                    <!-- <li>Multiple streams</li> -->
+                    <!-- <li>Dedicated manager</li> -->
+                </ul>
+                <button class="btn-primary" style="width: 100%;">Select Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Grow Your Stream?</h2>
+        <p>Join thousands of streamers who trust PVB for their viewer boost needs. Start your journey today.</p>
+        <a href="#pricing" class="btn-primary" style="font-size: 1.2rem; padding: 1rem 3rem;">Get Started Now</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 PVB.LLC - All rights reserved | <a href="#" style="color: #00ffd6; text-decoration: none;">Terms of Service</a> | <a href="#" style="color: #00ffd6; text-decoration: none;">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
